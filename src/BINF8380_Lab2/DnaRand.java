@@ -1,3 +1,8 @@
+/* BINF 8380 - Advanced Programming
+ * Conor Nodzak
+ * Lab 2 
+ */
+
 package BINF8380_Lab2;
 
 import java.util.Random;
