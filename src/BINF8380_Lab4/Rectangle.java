@@ -16,8 +16,8 @@ public class Rectangle{
 	
 	public static void main(String[] args) throws Exception
 	{
-		Rectangle r = new Rectangle(10, 5);
-		System.out.println(r.getArea());  //50
-		System.out.println(r.getPerimeter());  // 30
+		Rectangle rectang = new Rectangle(10, 5);
+		System.out.println(rectang.getArea());
+		System.out.println(rectang.getPerimeter());
 	}
 }
