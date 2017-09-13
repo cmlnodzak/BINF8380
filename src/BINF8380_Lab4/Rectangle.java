@@ -1,8 +1,8 @@
 package BINF8380_Lab4;
 
 public class Rectangle{
-	public static double width;
-	public static double height;
+	public double width;
+	public double height;
 	Rectangle(double wid, double hght){
 		 width = wid;
 		 height = hght;
@@ -16,7 +16,7 @@ public class Rectangle{
 	
 	public static void main(String[] args) throws Exception
 	{
-		Rectangle rectang = new Rectangle(10, 5);
+		Rectangle rectang = new Rectangle(25, 5);
 		System.out.println(rectang.getArea());
 		System.out.println(rectang.getPerimeter());
 	}
