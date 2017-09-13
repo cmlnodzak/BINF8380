@@ -22,27 +22,25 @@ public class AminoQuizzer {
 	public static void main(String[] args){
 		long beginTime = System.currentTimeMillis();
 		long timesUp = beginTime +30*1000;
-		long timeElapsed = 0;
 		int score = 0;
 		Random rand = new Random();
 		while (System.currentTimeMillis()< timesUp) {
 			for (int k = 0;k < 20; k++) {
 				int amino = rand.nextInt(20);
-				System.out.println("What is the one-letter abbreviation for: "+FULL_NAMES[amino]);
+				System.out.println("What is the one-letter code for: "+FULL_NAMES[amino]);
 				String usrGuess = getInput.next().toUpperCase();
 				if( usrGuess.matches(SHORT_NAMES[amino])){
 					score++;
 					System.out.println("Correct! Your current score is: " +score);
-					timeElapsed = (System.currentTimeMillis() - beginTime);
+					long timeElapsed = (System.currentTimeMillis() - beginTime);
 					float timegone = timeElapsed/1000f;
 					System.out.println(timegone+" seconds have elapsed!");
 				}
 				else {
 					score--;
 					System.out.println("Wrong! Your current score is: " +score);
-					timeElapsed += 31000;
 					System.out.println("You lose! Study more and start over!");
-				
+					break;
 				}
 			}
 		
