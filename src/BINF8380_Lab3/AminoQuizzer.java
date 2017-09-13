@@ -40,7 +40,6 @@ public class AminoQuizzer {
 					score--;
 					System.out.println("Wrong! Your current score is: " +score);
 					System.out.println("You lose! Study more and start over!");
-					break;
 				}
 			}
 		
