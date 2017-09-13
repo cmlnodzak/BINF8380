@@ -1,8 +1,8 @@
 package BINF8380_Lab4;
 
 public class Rectangle{
-	public double width;
-	public double height;
+	public static double width;
+	public static double height;
 	Rectangle(double wid, double hght){
 		 width = wid;
 		 height = hght;
