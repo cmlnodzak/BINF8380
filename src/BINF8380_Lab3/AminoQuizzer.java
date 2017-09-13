@@ -22,7 +22,7 @@ public static void main(String[] args){
 	long timeElapsed = 0;
 	int score = 0;
 	Random rand = new Random();
-	while (timeElapsed < 0.1*60*1000) {
+	while (timeElapsed < 0.5*60*1000) {
 	for (int k = 0;k < 20; k++) {
 		int amino = rand.nextInt(20);
 		System.out.println("What is the one-letter abbreviation for: "+FULL_NAMES[amino]);
