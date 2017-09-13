@@ -33,9 +33,8 @@ public class AminoQuizzer {
 				if( usrGuess.matches(SHORT_NAMES[amino])){
 					score++;
 					System.out.println("Correct! Your current score is: " +score);
-					long timeElapsed = (System.currentTimeMillis() - beginTime);
-					float timegone = timeElapsed/1000f;
-					System.out.println(timegone+" seconds have elapsed!");
+					float timeElapsed = (System.currentTimeMillis() - beginTime)/1000f;
+					System.out.println(timeElapsed+" seconds have elapsed!");
 				}
 				else {
 					score--;
@@ -49,7 +48,7 @@ public class AminoQuizzer {
 		}
 	getInput.close();
 	System.out.println("..............");
-	System.out.println("Good job! Time is up!");
+	System.out.println("Game Over!");
 	System.out.println("Your final score was: "+score+ "points!");
 
 	}
