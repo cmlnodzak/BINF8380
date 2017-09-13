@@ -24,6 +24,7 @@ public class AminoQuizzer {
 		long timesUp = beginTime +30*1000;
 		int score = 0;
 		Random rand = new Random();
+		Aminogame:
 		while (System.currentTimeMillis()< timesUp) {
 			for (int k = 0;k < 20; k++) {
 				int amino = rand.nextInt(20);
@@ -40,7 +41,9 @@ public class AminoQuizzer {
 					score--;
 					System.out.println("Wrong! Your current score is: " +score);
 					System.out.println("You lose! Study more and start over!");
+					break Aminogame;
 				}
+				
 			}
 		
 		}
