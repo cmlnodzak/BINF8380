@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+
 public class AminoGuiQuiz extends JFrame{
 	private static String[] SHORT_NAMES = { 
 			"A","R", "N", "D", "C", "Q", "E", 
