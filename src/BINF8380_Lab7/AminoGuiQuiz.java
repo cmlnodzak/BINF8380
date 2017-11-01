@@ -122,8 +122,8 @@ public class AminoGuiQuiz extends JFrame{
 	               }
 	            };
 			timeThread.start();
-			}
-			});
+		}
+	});
 	            
 		add(cancelButton);
 		cancelButton.addActionListener(new ActionListener() {
