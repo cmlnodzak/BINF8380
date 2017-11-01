@@ -37,27 +37,29 @@ public class AminoGuiQuiz extends JFrame{
 	private class responseListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			while(!cancel) {
 			String letterIn = responseField.getText().toUpperCase();
-			if(letterIn.matches(SHORT_NAMES[amino])){
+			if(letterIn.matches(SHORT_NAMES[amino]) && !cancel){
 				score++;
-				}
-			scoreField.setText(score+"");
-			responseField.setText("");
-			questionField.setText(FULL_NAMES[amino]);
-			}}
+				scoreField.setText(score+"");
+				responseField.setText("");
+				amino = rand.nextInt(20);
+				questionField.setText(FULL_NAMES[amino]);
+			}else if(!letterIn.matches(SHORT_NAMES[amino])) {
+				responseField.setText("");
+			}else if(cancel) {
+				responseField.setText("");
+				responseField.setEditable(false);
+			}
 		}
+	}
 			
 	private class questionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Thread questionThread = new Thread() {
 				public void run() {
-			while (!cancel) {
 				amino = rand.nextInt(20);
-				questionField.setText(FULL_NAMES[amino]);
-			}
-			amino = rand.nextInt(20);
+				questionField.setText(FULL_NAMES[amino]);		
 		}
 	};
 	questionThread.start();
@@ -92,25 +94,32 @@ public class AminoGuiQuiz extends JFrame{
 		startButton.addActionListener(new ActionListener() {
 			@Override
 	         public void actionPerformed(ActionEvent evt) {
+				startButton.setEnabled(false);
 	            cancel = false;
+	            score=0;
+	            scoreField.setText(score+"");
+	            responseField.setEditable(true);
 	            amino = rand.nextInt(20);
 	            questionField.setText(FULL_NAMES[amino]);
+	            timeField.setText(time+"");
 	            Thread timeThread = new Thread() {
 	               @Override
 	               public void run() { 
-	                  while( time >= 0) {
-	                     if (cancel) break;
+	                  while( time >= 0 && !cancel) {
 	                     timeField.setText(time + "");
 	                     --time;
-	                  try {
-	                	  sleep(1000);
-	                  } catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-	               }
+	                     try {
+	                    	 	sleep(1000);
+	                     } catch (InterruptedException e) {
+	                    	 e.printStackTrace();
+	                     }
+	                  }
 	                  timeField.setText("GAME OVER");
+	                  responseField.setEditable(false);
+	                  time = 30;
 	                  cancel = true;
-	              }
+	                  startButton.setEnabled(true);
+	               }
 	            };
 			timeThread.start();
 			}
@@ -121,8 +130,10 @@ public class AminoGuiQuiz extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cancel = true;
+				responseField.setEditable(false);
 				timeField.setText("GAME OVER");
 				time = 30;
+				startButton.setEnabled(true);
 			}
 		
 	        });
