@@ -157,7 +157,4 @@ public class AminoGuiQuiz extends JFrame{
 	}
 
 
-
-
-
 }
