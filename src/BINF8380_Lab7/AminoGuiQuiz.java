@@ -20,16 +20,19 @@ public class AminoGuiQuiz extends JFrame{
 	private static final long serialVersionUID = -5465077034163085045L;
 	private Label timeLabel;
 	private Label scoreLabel;
+	private Label wrongLabel;
 	private Label questionLabel;
 	private Label answerLabel;
 	private TextField questionField = new TextField(25);
 	private TextField responseField = new TextField(10);
 	private TextField timeField = new TextField(10);
 	private TextField scoreField = new TextField(10);
+	private TextField wrongField = new TextField(10);
 	private JButton startButton = new JButton("Begin Quiz!");
 	private JButton cancelButton = new JButton("End Quiz!");
 	protected Random rand = new Random();
 	private int score = 0;
+	private int wrong = 0;
 	protected int amino;
 	private Integer time = 30;
 	private boolean cancel = false;	
@@ -45,6 +48,8 @@ public class AminoGuiQuiz extends JFrame{
 				amino = rand.nextInt(20);
 				questionField.setText(FULL_NAMES[amino]);
 			}else if(!letterIn.matches(SHORT_NAMES[amino])) {
+				wrong++;
+				wrongField.setText(wrong+"");
 				responseField.setText("");
 			}else if(cancel) {
 				responseField.setText("");
@@ -81,6 +86,10 @@ public class AminoGuiQuiz extends JFrame{
 		add(scoreField);
 		scoreField.setText(score+"");
 		scoreField.setEditable(false);
+		wrongLabel = new Label("Number wrong: ");
+		add(wrongLabel);
+		add(wrongField);
+		wrongField.setEditable(false);
 		questionLabel = new Label("What is the one-letter code for the following Amino Acid? ");
 		add(questionLabel);
 		add(questionField);
@@ -96,8 +105,10 @@ public class AminoGuiQuiz extends JFrame{
 	         public void actionPerformed(ActionEvent evt) {
 				startButton.setEnabled(false);
 	            cancel = false;
-	            score=0;
+	            score = 0;
+	            wrong = 0;
 	            scoreField.setText(score+"");
+	            wrongField.setText(wrong+"");
 	            responseField.setEditable(true);
 	            amino = rand.nextInt(20);
 	            questionField.setText(FULL_NAMES[amino]);
