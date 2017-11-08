@@ -21,8 +21,7 @@ public class NucleoCounter {
 				for (String fasLine = readfasta.readLine(); fasLine != null; fasLine = readfasta.readLine())
 					{
 					if(!fasLine.startsWith(">")) {
-						seq = seq+fasLine;
-						//seq.append(fasLine);
+						getBases(fasLine);
 					}
 				}
 				readfasta.close();
@@ -31,7 +30,6 @@ public class NucleoCounter {
 				}
 		    }
 		}
-	getBases(seq);
 	}
 	public void getBases(String fas) {
 		for(int i = 0;i < fas.length() ; i++ ) {
@@ -50,6 +48,7 @@ public class NucleoCounter {
 		}
 	}	
 	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
 		File[] files = new File("/Users/mitchnodzak/adenomasRelease/fasta").listFiles();
 		new NucleoCounter(files);
 		System.out.println("Count of A: "+adenosine);
@@ -57,6 +56,9 @@ public class NucleoCounter {
 		System.out.println("Count of C: "+cytosine);
 		System.out.println("Count of G: "+guanine);
 		System.out.println("Unknown nucleotides: "+unknown);
+		long stopTime = System.currentTimeMillis();
+		float elapsedTime = ((stopTime - startTime)/1000f);
+	     System.out.println("The code took: "+elapsedTime+ " seconds");
 	}
 
 }
