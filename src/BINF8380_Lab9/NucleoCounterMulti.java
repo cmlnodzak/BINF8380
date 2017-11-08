@@ -8,7 +8,7 @@ import java.util.concurrent.Semaphore;
 
 
 public class NucleoCounterMulti {
-		public static final int NUM_THREADS = Runtime.getRuntime().availableProcessors() + 1;
+		private static final int NUM_THREADS = Runtime.getRuntime().availableProcessors() + 1;
 		final Semaphore mySemaphore = new Semaphore(NUM_THREADS);
 		private volatile static int adenosine = 0;
 		private volatile static int thymine = 0;
@@ -16,9 +16,9 @@ public class NucleoCounterMulti {
 		private volatile static int guanine = 0;
 		private volatile static int unknown = 0;
 		public NucleoCounterMulti(File[] listofFiles) throws InterruptedException{
+			mySemaphore.acquire();
 			for (File file : listofFiles) {
 			try {
-				mySemaphore.acquire();
 			    if (file.isFile()) {
 			    	try {
 					BufferedReader readfasta = new BufferedReader(new FileReader(file));
@@ -34,7 +34,8 @@ public class NucleoCounterMulti {
 					}
 			    }
 		} finally {
-		    mySemaphore.release();}}
+		    mySemaphore.release();}
+			}
 		}
 		public void getBases(String fas) {
 			for(int i = 0;i < fas.length() ; i++ ) {
