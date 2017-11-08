@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.File;
-import java.lang.StringBuffer;
 
 public class NucleoCounter {
 	private static int adenosine = 0;
@@ -12,7 +11,6 @@ public class NucleoCounter {
 	private static int cytosine = 0;
 	private static int guanine = 0;
 	private static int unknown = 0;
-	private String seq;
 	public NucleoCounter(File[] listofFiles){
 		for (File file : listofFiles) {
 		    if (file.isFile()) {
@@ -58,7 +56,7 @@ public class NucleoCounter {
 		System.out.println("Unknown nucleotides: "+unknown);
 		long stopTime = System.currentTimeMillis();
 		float elapsedTime = ((stopTime - startTime)/1000f);
-	     System.out.println("The code took: "+elapsedTime+ " seconds");
+	     System.out.println("The method took: "+elapsedTime+ " seconds to run.");
 	}
 
 }
