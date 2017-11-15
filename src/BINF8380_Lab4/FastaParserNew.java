@@ -63,7 +63,8 @@ public class FastaParserNew{
 		readfasta.close();
 		return result;
 		} 
-		
+	
+
 	public static void main(String[] args) throws Exception{
 	}
 }
